@@ -5,14 +5,7 @@ int main()
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-	int x, y;
-    cin >> x >> y;
-
-    int ans = x * 100;
-    int sum = y - x;
-    ans = ans + (sum * 150);
-
-    cout << ans << endl;
+	
 
 	return 0;
 }
