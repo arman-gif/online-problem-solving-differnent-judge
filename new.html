@@ -1,0 +1,230 @@
+<style>
+:root {
+  --obsidian: #0c0b09;
+  --ivory: #f0ead6;
+  --gold: #b8862a;
+  --amber: #c4813a;
+  --tobacco: #5c3a1a;
+  --stone: #f5f1ea;
+  --gold-border: rgba(184,134,42,0.22);
+}
+.f-main {
+  background: var(--obsidian);
+  padding: 52px 52px 28px;
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 36px;
+  padding-bottom: 36px;
+  border-bottom: 1px solid rgba(184,134,42,0.1);
+}
+.footer-brand-name {
+  max-width: 200px;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.footer-tagline {
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.footer-desc {
+  font-size: 11px;
+  line-height: 1.8;
+  color: rgba(240,234,214,0.35);
+}
+.footer-col-title {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 14px;
+}
+.footer-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.footer-links a {
+  font-size: 11px;
+  color: rgba(240,234,214,0.55);
+  text-decoration: none;
+  transition: color .3s;
+}
+.footer-links a:hover {
+  color: var(--gold);
+}
+.footer-badges {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+.trust-pill {
+  border: 1px solid rgba(184,134,42,0.2);
+  padding: 5px 12px;
+  font-size: 8px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(240,234,214,0.4);
+  white-space: nowrap;
+}
+.footer-disclaimer {
+  font-size: 9px;
+  line-height: 1.75;
+  color: rgba(240,234,214,0.2);
+  border-top: 1px solid rgba(184,134,42,0.08);
+  padding-top: 18px;
+}
+.payment-strip {
+  background: var(--stone);
+  padding: 14px 52px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  border-top: 1px solid var(--gold-border);
+}
+.payment-strip span {
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #999;
+}
+.payment-badge {
+  background: #fff;
+  border: 1px solid #e0d8c8;
+  padding: 4px 10px;
+  font-size: 9px;
+  font-weight: 500;
+  color: #666;
+  white-space: nowrap;
+}
+
+/* Laptop / small desktop */
+@media (max-width: 1100px) {
+  .f-main {
+    padding: 44px 36px 24px;
+  }
+  .footer-top {
+    gap: 32px;
+  }
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .footer-top {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 32px;
+    column-gap: 28px;
+  }
+  .footer-top > div:first-child {
+    grid-column: 1 / -1;
+  }
+  .payment-strip {
+    padding: 14px 36px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .f-main {
+    padding: 32px 20px 20px;
+  }
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    margin-bottom: 28px;
+    padding-bottom: 28px;
+  }
+  .footer-top > div:first-child {
+    grid-column: 1 / -1;
+  }
+  .footer-top > div:first-child {
+    grid-column: auto;
+  }
+  .footer-brand-name {
+    max-width: 200px;
+  }
+  .footer-badges {
+    gap: 8px;
+  }
+  .trust-pill {
+    font-size: 7.5px;
+    padding: 5px 10px;
+  }
+  .payment-strip {
+    justify-content: flex-start;
+    padding: 14px 20px;
+    gap: 8px;
+  }
+  .footer-disclaimer {
+    font-size: 8.5px;
+  }
+}
+</style>
+<div class="f-main">
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-name"><a href="/"><img src="/wp-content/uploads/2026/07/Email-Banner-Dark.png" alt="House of Aureon" style="width:100%;height:auto;"></a></div>
+      <div class="footer-tagline">Precision Peptides</div>
+      <div class="footer-desc">
+        Research peptides of the highest verified standard. Independent COA on every batch. Global supply, Australian operated.
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Navigate</div>
+      <ul class="footer-links">
+        <li><a href="/the-collection/">The Collection</a></li>
+        <li><a href="/the-science/">The Science</a></li>
+        <li><a href="/the-house/">The House</a></li>
+        <li><a href="/the-protocol/">The Protocol</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Support</div>
+      <ul class="footer-links">
+        <li><a href="/contact/">Contact</a></li>
+        <li><a href="/my-account/">Account</a></li>
+        <li><a href="/coa-library/">COA Library</a></li>
+        <li><a href="/become-a-reseller/">Become a Reseller</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Legal</div>
+      <ul class="footer-links">
+        <li><a href="/privacy-policy/">Privacy Policy</a></li>
+        <li><a href="/terms-of-service/">Terms of Service</a></li>
+        <li><a href="/shipping-policy/">Shipping Policy</a></li>
+        <li><a href="/returns-policy/">Returns Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-badges">
+    <div class="trust-pill">≥99% Purity</div>
+    <div class="trust-pill">SSL Encrypted</div>
+    <div class="trust-pill">Discreet Shipping</div>
+    <div class="trust-pill">COA Every Batch</div>
+  </div>
+  <div class="footer-disclaimer">
+   All products supplied by House of Aureon are intended strictly for in vitro and laboratory research purposes only. Not for human or veterinary consumption, therapeutic use, or as dietary supplements. Not listed on the ARTG. Not approved by the TGA. Operates in accordance with the Therapeutic Goods Act 1989. For research use only · 18+ · © 2026 House of Aureon. All rights reserved.
+  </div>
+</div>
+<div class="payment-strip">
+  <span>Accepted:</span>
+  <div class="payment-badge">VISA</div>
+  <div class="payment-badge">Mastercard</div>
+  <div class="payment-badge">AMEX</div>
+  <div class="payment-badge">Crypto</div>
+  <div class="payment-badge">Trust Signals</div>
+</div>
