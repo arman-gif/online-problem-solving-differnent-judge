@@ -10,18 +10,18 @@ int main()
         long long x, y, n;
         cin >> x >> y >> n;
 
-        long long sum = n * y;
-        long long ans;
+        long long ans = n * y;
+        long long sum;
 
-        if(sum >= x)
+        if(ans >= x)
         {
-            ans = 0;
+            sum = 0;
         }
         else
         {
-            ans = x - sum;
+            sum = x - ans;
         }
-        cout << ans << endl;
+        cout << sum << endl;
     }
 
 	return 0;

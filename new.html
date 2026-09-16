@@ -1,230 +1,864 @@
-<style>
-:root {
-  --obsidian: #0c0b09;
-  --ivory: #f0ead6;
-  --gold: #b8862a;
-  --amber: #c4813a;
-  --tobacco: #5c3a1a;
-  --stone: #f5f1ea;
-  --gold-border: rgba(184,134,42,0.22);
-}
-.f-main {
-  background: var(--obsidian);
-  padding: 52px 52px 28px;
-}
-.footer-top {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 48px;
-  margin-bottom: 36px;
-  padding-bottom: 36px;
-  border-bottom: 1px solid rgba(184,134,42,0.1);
-}
-.footer-brand-name {
-  max-width: 200px;
-  width: 100%;
-  height: auto;
-  display: block;
-}
-.footer-tagline {
-  font-size: 9px;
-  letter-spacing: 2px;
-  color: var(--gold);
-  text-transform: uppercase;
-  margin-bottom: 14px;
-}
-.footer-desc {
-  font-size: 11px;
-  line-height: 1.8;
-  color: rgba(240,234,214,0.35);
-}
-.footer-col-title {
-  font-size: 9px;
-  font-weight: 500;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 14px;
-}
-.footer-links {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.footer-links a {
-  font-size: 11px;
-  color: rgba(240,234,214,0.55);
-  text-decoration: none;
-  transition: color .3s;
-}
-.footer-links a:hover {
-  color: var(--gold);
-}
-.footer-badges {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-bottom: 18px;
-}
-.trust-pill {
-  border: 1px solid rgba(184,134,42,0.2);
-  padding: 5px 12px;
-  font-size: 8px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: rgba(240,234,214,0.4);
-  white-space: nowrap;
-}
-.footer-disclaimer {
-  font-size: 9px;
-  line-height: 1.75;
-  color: rgba(240,234,214,0.2);
-  border-top: 1px solid rgba(184,134,42,0.08);
-  padding-top: 18px;
-}
-.payment-strip {
-  background: var(--stone);
-  padding: 14px 52px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 14px;
-  flex-wrap: wrap;
-  border-top: 1px solid var(--gold-border);
-}
-.payment-strip span {
-  font-size: 9px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: #999;
-}
-.payment-badge {
-  background: #fff;
-  border: 1px solid #e0d8c8;
-  padding: 4px 10px;
-  font-size: 9px;
-  font-weight: 500;
-  color: #666;
-  white-space: nowrap;
-}
 
-/* Laptop / small desktop */
-@media (max-width: 1100px) {
-  .f-main {
-    padding: 44px 36px 24px;
-  }
-  .footer-top {
-    gap: 32px;
-  }
-}
+<div id="gp-quote-root"></div>
 
-/* Tablet */
-@media (max-width: 900px) {
-  .footer-top {
+<style>#gp-quote-root, #gp-quote-root *{ box-sizing: border-box; }#gp-quote-root{
+    --green: #2EA84F;
+    --green-dark: #15583B;
+    --green-tint: #EAF3EE;
+    --ink: #26261F;
+    --muted: #6B6B62;
+    --line: #E0DDD3;
+    --paper: #FFFFFF;
+    --cream: #FBFAF6;
+    --error: #B4332A;
+    --error-tint: #FBEAE8;
+    --warn-tint: #FCF2D9;
+    --warn-ink: #7A5B12;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--ink);
+    max-width: 1300px;
+    margin: 0 auto;
+    line-height: 1.45;
+    padding: 0 16px;
+  }#gp-quote-root .gp-inner{
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  /* ---- Responsive breakpoints ----
+     Mobile:  <=480px  (phones)
+     Tablet:  481–1024px
+     Laptop+: >=1025px
+     .gp-inner widens progressively; at full desktop width (>=1300px)
+     the widget itself is 1300px, matching the requested desktop layout. */
+  @media (min-width: 1025px){#gp-quote-root .gp-inner{ max-width: 900px; }#gp-quote-root h2.gp-title{ font-size: 1.7rem; }
+  }
+  @media (min-width: 1300px){#gp-quote-root .gp-inner{ max-width: 1300px; }
+  }
+  @media (max-width: 480px) {#gp-quote-root{ padding: 0 12px; }
+  }#gp-quote-root h2.gp-title{ font-size: 2.5rem; margin: 0 0 4px; }#gp-quote-root p.gp-sub{ color: var(--muted); margin: 0 0 2px; font-size: 0.95rem; }#gp-quote-root p.gp-call{ color: var(--green); margin: 0 0 18px; font-size: 0.9rem; }#gp-quote-root p.gp-call a{ color: var(--green); }#gp-quote-root .gp-card{
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 28px 24px;
+  }
+  @media (max-width: 480px) {#gp-quote-root .gp-card{ padding: 20px 16px; border-radius: 10px; }
+  }#gp-quote-root .gp-progress{
+    display: flex;
+    gap: 6px;
+    margin-bottom: 20px;
+  }#gp-quote-root .gp-progress span{
+    height: 4px;
+    flex: 1;
+    border-radius: 2px;
+    background: var(--line);
+  }#gp-quote-root .gp-progress span.gp-done{ background: var(--green); }#gp-quote-root .gp-step-label{
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    font-size: 0.72rem;
+    color: var(--muted);
+    font-weight: 600;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 12px;
+    margin-bottom: 18px;
+  }#gp-quote-root .gp-field{ margin-bottom: 16px; }#gp-quote-root .gp-field label{
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }#gp-quote-root .gp-field label .gp-opt{
+    font-weight: 400;
+    color: var(--muted);
+  }#gp-quote-root .gp-field select, #gp-quote-root .gp-field input[type="text"], #gp-quote-root .gp-field input[type="tel"], #gp-quote-root .gp-field input[type="email"], #gp-quote-root .gp-field textarea{
+    width: 100%;
+    padding: 6px 12px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    font-size: 16px; /* fixed px, not rem: keeps it >=16px so iOS Safari doesn't auto-zoom on focus */
+    line-height: 26px;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: inherit;
+  }#gp-quote-root .gp-field select:focus, #gp-quote-root .gp-field input:focus, #gp-quote-root .gp-field textarea:focus{
+    outline: 2px solid var(--green);
+    outline-offset: 1px;
+    background: var(--paper);
+  }#gp-quote-root .gp-field select:disabled{
+    background: var(--line);
+    color: var(--muted);
+    cursor: not-allowed;
+  }#gp-quote-root .gp-field textarea{ resize: vertical; min-height: 76px; }#gp-quote-root .gp-field.gp-invalid select, #gp-quote-root .gp-field.gp-invalid input, #gp-quote-root .gp-field.gp-invalid textarea{
+    border-color: var(--error);
+    background: var(--error-tint);
+  }#gp-quote-root .gp-error-msg{
+    display: none;
+    color: var(--error);
+    font-size: 0.8rem;
+    margin-top: 5px;
+  }#gp-quote-root .gp-field.gp-invalid .gp-error-msg{ display: block; }#gp-quote-root .gp-row2{
+    display: grid;
     grid-template-columns: 1fr 1fr;
-    row-gap: 32px;
-    column-gap: 28px;
+    gap: 16px;
   }
-  .footer-top > div:first-child {
-    grid-column: 1 / -1;
+  @media (max-width: 480px) {#gp-quote-root .gp-row2{ grid-template-columns: 1fr; }
+  }#gp-quote-root .gp-fields-auto{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 16px;
   }
-  .payment-strip {
-    padding: 14px 36px;
+  @media (max-width: 480px) {#gp-quote-root .gp-fields-auto{ grid-template-columns: 1fr; }
+  }#gp-quote-root .gp-property-cards{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
   }
-}
-
-/* Mobile */
-@media (max-width: 600px) {
-  .f-main {
-    padding: 32px 20px 20px;
+  @media (max-width: 480px) {#gp-quote-root .gp-property-cards{ grid-template-columns: 1fr; }
+  }#gp-quote-root .gp-prop-card{
+    border: 2px solid var(--line);
+    border-radius: 10px;
+    padding: 18px 10px;
+    text-align: center;
+    background: var(--cream);
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }#gp-quote-root .gp-prop-card .gp-emoji{ font-size: 1.6rem; display: block; margin-bottom: 6px; }#gp-quote-root .gp-prop-card:hover{ border-color: #BFC9BF; }#gp-quote-root .gp-prop-card.gp-selected{
+    border-color: var(--green);
+    background: var(--green-tint);
+    color: var(--green-dark);
+  }#gp-quote-root .gp-prop-card:focus-visible{ outline: 2px solid var(--green); outline-offset: 2px; }#gp-quote-root .gp-addons{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 8px 20px;
+    margin-top: 4px;
   }
-  .footer-top {
-    grid-template-columns: 1fr;
-    gap: 28px;
-    margin-bottom: 28px;
-    padding-bottom: 28px;
-  }
-  .footer-top > div:first-child {
-    grid-column: 1 / -1;
-  }
-  .footer-top > div:first-child {
-    grid-column: auto;
-  }
-  .footer-brand-name {
-    max-width: 200px;
-  }
-  .footer-badges {
-    gap: 8px;
-  }
-  .trust-pill {
-    font-size: 7.5px;
-    padding: 5px 10px;
-  }
-  .payment-strip {
-    justify-content: flex-start;
-    padding: 14px 20px;
-    gap: 8px;
-  }
-  .footer-disclaimer {
-    font-size: 8.5px;
-  }
-}
+  @media (max-width: 480px) {#gp-quote-root .gp-addons{ grid-template-columns: 1fr; }
+  }#gp-quote-root .gp-check{
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    padding: 4px 0;
+  }#gp-quote-root .gp-check input{ width: 17px; height: 17px; accent-color: var(--green); flex-shrink: 0; }#gp-quote-root .gp-check-label{ margin-left: 8px; }#gp-quote-root .gp-consent{
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.85rem;
+    margin: 16px 0 20px;
+    color: var(--muted);
+  }#gp-quote-root .gp-consent input{ margin-top: 3px; width: 16px; height: 16px; accent-color: var(--green); flex-shrink: 0; }#gp-quote-root .gp-consent a{ color: var(--green); }#gp-quote-root .gp-rental-note{
+    background: var(--warn-tint);
+    color: var(--warn-ink);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 0.82rem;
+    margin: 4px 0 18px;
+  }#gp-quote-root .gp-zip-warn{
+    background: var(--warn-tint);
+    color: var(--warn-ink);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 0.85rem;
+    margin: -6px 0 16px;
+  }#gp-quote-root .gp-actions{
+    display: flex;
+    gap: 12px;
+    margin-top: 4px;
+  }#gp-quote-root .gp-btn{
+    border: none;
+    border-radius: 9px;
+    padding: 13px 20px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+  }#gp-quote-root .gp-btn-primary{
+    background: var(--green);
+    color: #fff;
+    flex: 1;
+  }#gp-quote-root .gp-btn-primary:hover{ background: var(--green-dark); }#gp-quote-root .gp-btn-primary:disabled{ background: #A9C4B4; cursor: not-allowed; }#gp-quote-root .gp-btn-secondary{
+    background: var(--paper);
+    color: var(--ink);
+    border: 1px solid var(--line);
+    flex: 0 0 auto;
+    min-width: 92px;
+  }#gp-quote-root .gp-btn-secondary:hover{ background: var(--cream); }#gp-quote-root .gp-confirm{ text-align: center; padding: 40px 24px; }#gp-quote-root .gp-confirm .gp-check-circle{
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--green-tint); color: var(--green);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.6rem; margin: 0 auto 16px;
+  }#gp-quote-root .gp-confirm h3{ margin: 0 0 8px; font-size: 1.3rem; }#gp-quote-root .gp-confirm p{ color: var(--muted); margin: 0 0 4px; font-size: 0.92rem; }#gp-quote-root .gp-confirm .gp-confirm-links{ margin-top: 18px; font-size: 0.9rem; }#gp-quote-root .gp-confirm .gp-confirm-links a{ color: var(--green); font-weight: 600; margin: 0 10px; text-decoration: underline; }#gp-quote-root .gp-sr-only{
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }#gp-quote-root .gp-hp-field{ position: absolute; left: -9999px; top: -9999px; }
 </style>
-<div class="f-main">
-  <div class="footer-top">
-    <div>
-      <div class="footer-brand-name"><a href="/"><img src="/wp-content/uploads/2026/07/Email-Banner-Dark.png" alt="House of Aureon" style="width:100%;height:auto;"></a></div>
-      <div class="footer-tagline">Precision Peptides</div>
-      <div class="footer-desc">
-        Research peptides of the highest verified standard. Independent COA on every batch. Global supply, Australian operated.
-      </div>
-    </div>
-    <div>
-      <div class="footer-col-title">Navigate</div>
-      <ul class="footer-links">
-        <li><a href="/the-collection/">The Collection</a></li>
-        <li><a href="/the-science/">The Science</a></li>
-        <li><a href="/the-house/">The House</a></li>
-        <li><a href="/the-protocol/">The Protocol</a></li>
-      </ul>
-    </div>
-    <div>
-      <div class="footer-col-title">Support</div>
-      <ul class="footer-links">
-        <li><a href="/contact/">Contact</a></li>
-        <li><a href="/my-account/">Account</a></li>
-        <li><a href="/coa-library/">COA Library</a></li>
-        <li><a href="/become-a-reseller/">Become a Reseller</a></li>
-      </ul>
-    </div>
-    <div>
-      <div class="footer-col-title">Legal</div>
-      <ul class="footer-links">
-        <li><a href="/privacy-policy/">Privacy Policy</a></li>
-        <li><a href="/terms-of-service/">Terms of Service</a></li>
-        <li><a href="/shipping-policy/">Shipping Policy</a></li>
-        <li><a href="/returns-policy/">Returns Policy</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-badges">
-    <div class="trust-pill">≥99% Purity</div>
-    <div class="trust-pill">SSL Encrypted</div>
-    <div class="trust-pill">Discreet Shipping</div>
-    <div class="trust-pill">COA Every Batch</div>
-  </div>
-  <div class="footer-disclaimer">
-   All products supplied by House of Aureon are intended strictly for in vitro and laboratory research purposes only. Not for human or veterinary consumption, therapeutic use, or as dietary supplements. Not listed on the ARTG. Not approved by the TGA. Operates in accordance with the Therapeutic Goods Act 1989. For research use only · 18+ · © 2026 House of Aureon. All rights reserved.
-  </div>
-</div>
-<div class="payment-strip">
-  <span>Accepted:</span>
-  <div class="payment-badge">VISA</div>
-  <div class="payment-badge">Mastercard</div>
-  <div class="payment-badge">AMEX</div>
-  <div class="payment-badge">Crypto</div>
-  <div class="payment-badge">Trust Signals</div>
-</div>
+
+<script>
+(function () {
+  // ---- Configuration -----------------------------------------------
+  // Point this at your server endpoint to actually send the two emails
+  // and save the lead. Leave blank to demo the flow without a backend.
+  var FORM_SUBMIT_URL = ""; // e.g. "/wp-json/greenpuppy/v1/quote"
+  // Phone number: the spec doc flags "+0062561416" as a fake/non-dialable
+  // placeholder still live on the site (see "Placeholder text still live
+  // on the site" table). Set here per your instruction; swap for the
+  // real number the owner supplies before this goes live.
+  var PHONE_DISPLAY = "+0062561416";
+  var PHONE_TEL = "+0062561416"; // digits used in the tel: link
+
+  var root = document.getElementById("gp-quote-root");
+
+  // ---- FIX: Service / Frequency lists are now per property type -----
+  // Previously there was one global SERVICE_OPTIONS + FREQUENCY_OPTIONS
+  // list shared by every property type, which is why "Service needed"
+  // showed every option (including a duplicate "Commercial cleaning")
+  // no matter which card was selected. Per the spec doc, House and
+  // Apartment/condo share one pair of lists; Office/commercial gets a
+  // different, shorter service list and a longer frequency list.
+  var RESIDENTIAL_SERVICE_OPTIONS = [
+    { v: "", label: "Choose one" },
+    { v: "regular", label: "Regular cleaning" },
+    { v: "deep", label: "Deep cleaning" },
+    { v: "move", label: "Move-in / move-out cleaning" },
+    { v: "rental", label: "Airbnb or short-term rental turnover" },
+    { v: "unsure", label: "Not sure — recommend one" }
+  ];
+  var COMMERCIAL_SERVICE_OPTIONS = [
+    { v: "", label: "Choose one" },
+    { v: "general", label: "General cleaning" },
+    { v: "deep", label: "Deep clean" },
+    { v: "move", label: "Move-in / move-out" },
+    { v: "unsure", label: "Not sure — recommend one" }
+  ];
+  var RESIDENTIAL_FREQUENCY_OPTIONS = [
+    { v: "", label: "Choose one" },
+    { v: "one_time", label: "One time" },
+    { v: "weekly", label: "Weekly" },
+    { v: "biweekly", label: "Every 2 weeks" },
+    { v: "monthly", label: "Monthly" }
+  ];
+  var COMMERCIAL_FREQUENCY_OPTIONS = [
+    { v: "", label: "Choose one" },
+    { v: "one_time", label: "One time" },
+    { v: "daily", label: "Daily" },
+    { v: "few_times_week", label: "Two to three times a week" },
+    { v: "weekly", label: "Weekly" },
+    { v: "biweekly", label: "Every two weeks" },
+    { v: "monthly", label: "Monthly" }
+  ];
+  function serviceOptionsFor(type) {
+    return type === "office" ? COMMERCIAL_SERVICE_OPTIONS : RESIDENTIAL_SERVICE_OPTIONS;
+  }
+  function frequencyOptionsFor(type) {
+    return type === "office" ? COMMERCIAL_FREQUENCY_OPTIONS : RESIDENTIAL_FREQUENCY_OPTIONS;
+  }
+  var DISABLED_OPTIONS = [{ v: "", label: "Choose a property type first" }];
+
+  var PROPERTY_CARDS = [
+    { v: "house", label: "House", emoji: "\uD83C\uDFE0" },
+    { v: "apartment", label: "Apartment or condo", emoji: "\uD83C\uDFE2" },
+    { v: "office", label: "Office or commercial", emoji: "\uD83D\uDCBC" }
+  ];
+
+  var HOUSE_ADDONS = [
+    ["fridge", "Inside fridge"], ["oven", "Inside oven"],
+    ["windows", "Interior windows"], ["cabinets", "Cabinet interiors"],
+    ["laundry", "Laundry or linens"], ["basement", "Basement or garage"],
+    ["pets", "Pets in home"]
+  ];
+  var APARTMENT_ADDONS = [
+    ["fridge", "Inside fridge"], ["oven", "Inside oven"],
+    ["windows", "Interior windows"], ["cabinets", "Cabinet interiors"],
+    ["laundry", "Laundry or linens"], ["balcony", "Balcony or patio"],
+    ["pets", "Pets in home"]
+  ];
+  var OFFICE_ADDONS = [
+    ["breakroom", "Break room or kitchen"], ["windows", "Interior windows"],
+    ["carpet", "Carpet care"], ["floors", "Floor stripping or waxing"],
+    ["trash", "Trash and recycling"], ["restrooms", "Restroom restocking"]
+  ];
+
+  // Demo service-area list — every mockup ZIP is 30301, so this ships with
+  // a small Atlanta-metro placeholder set just so the "outside area" message
+  // is demonstrable. Replace SERVICE_AREA_ZIP_PREFIXES with the owner's real
+  // coverage area (full ZIPs or 3-digit prefixes both work) before going live.
+  // NOTE: this only ever shows a soft warning below the ZIP field — it does
+  // NOT block the form. Any 5-digit ZIP is accepted and lets you continue to
+  // Step 3. Use 30301 while testing if you want to see the "no warning" path.
+  var SERVICE_AREA_ZIP_PREFIXES = ["300", "301", "302", "303", "311", "312"];
+  function isZipInServiceArea(zip) {
+    if (!/^[0-9]{5}$/.test(zip || "")) return true; // format errors are handled separately
+    var prefix3 = zip.slice(0, 3);
+    return SERVICE_AREA_ZIP_PREFIXES.some(function (p) {
+      return p.length === 5 ? p === zip : p === prefix3;
+    });
+  }
+
+  // ---- State ---------------------------------------------------------
+  var state = {
+    step: 1,
+    propertyType: "",
+    service: "",
+    frequency: "",
+    house: { bedrooms: "", bathrooms: "", levels: "", zip: "", addons: {} },
+    apartment: { bedrooms: "", bathrooms: "", access: "", zip: "", addons: {} },
+    office: { size: "", type: "", restrooms: "", window: "", zip: "", addons: {} },
+    rental: { turnovers: "", linens: "" },
+    contact: { name: "", phone: "", email: "", date: "", message: "", consent: false, hp: "" }
+  };
+  var errors = {};
+  var submitting = false;
+  var submitted = false;
+
+  // ---- FIX: ?service= prefill --------------------------------------
+  // The property type (and therefore which list is valid) isn't known
+  // until a card is picked, so we hold onto the URL value and only try
+  // to apply it the first time a property card is selected. If it's not
+  // on that type's list, per the spec it's dropped silently — no error.
+  var pendingServiceParam = (function () {
+    var params = new URLSearchParams(window.location.search);
+    return params.get("service") || "";
+  })();
+
+  // ---- Helpers ---------------------------------------------------------
+  function el(tag, attrs, children) {
+    var node = document.createElement(tag);
+    attrs = attrs || {};
+    for (var k in attrs) {
+      var v = attrs[k];
+      if (v === null || v === undefined || v === false) continue; // skip falsy attrs entirely
+      if (k === "class") node.className = v;
+      else if (k === "html") node.innerHTML = v;
+      else if (k.indexOf("on") === 0) node.addEventListener(k.slice(2), v);
+      else if (v === true) node.setAttribute(k, ""); // boolean attrs (disabled, required, etc.)
+      else node.setAttribute(k, v);
+    }
+    (children || []).forEach(function (c) {
+      if (c) node.appendChild(typeof c === "string" ? document.createTextNode(c) : c);
+    });
+    return node;
+  }
+
+  function selectField(opts) {
+    // opts: { label, options: [{v,label}], value, onChange, id, required, optional, autocomplete, inputmode, disabled }
+    var wrap = el("div", { class: "gp-field" + (errors[opts.id] ? " gp-invalid" : "") });
+    wrap.appendChild(el("label", { for: opts.id }, [
+      opts.label,
+      opts.optionalTag ? el("span", { class: "gp-opt", html: " (optional)" }) : null
+    ]));
+    var select = el("select", {
+      id: opts.id,
+      disabled: !!opts.disabled,
+      onchange: function (e) { opts.onChange(e.target.value); }
+    });
+    opts.options.forEach(function (o) {
+      var optEl = el("option", { value: o.v }, [o.label]);
+      if (o.v === opts.value) optEl.setAttribute("selected", "selected");
+      select.appendChild(optEl);
+    });
+    wrap.appendChild(select);
+    if (errors[opts.id]) wrap.appendChild(el("div", { class: "gp-error-msg" }, [errors[opts.id]]));
+    return wrap;
+  }
+
+  function textField(opts) {
+    // opts: { label, id, value, onInput, type, placeholder, optionalTag, autocomplete, inputmode, maxlength }
+    var wrap = el("div", { class: "gp-field" + (errors[opts.id] ? " gp-invalid" : "") });
+    wrap.appendChild(el("label", { for: opts.id }, [
+      opts.label,
+      opts.optionalTag ? el("span", { class: "gp-opt", html: " (optional)" }) : null
+    ]));
+    var attrs = {
+      id: opts.id,
+      type: opts.type || "text",
+      placeholder: opts.placeholder || "",
+      value: opts.value || "",
+      oninput: function (e) { opts.onInput(e.target.value); }
+    };
+    if (opts.autocomplete) attrs.autocomplete = opts.autocomplete;
+    if (opts.inputmode) attrs.inputmode = opts.inputmode;
+    if (opts.maxlength) attrs.maxlength = opts.maxlength;
+    var input = el("input", attrs);
+    input.value = opts.value || "";
+    wrap.appendChild(input);
+    if (errors[opts.id]) wrap.appendChild(el("div", { class: "gp-error-msg" }, [errors[opts.id]]));
+    return wrap;
+  }
+
+  function textareaField(opts) {
+    var wrap = el("div", { class: "gp-field" });
+    wrap.appendChild(el("label", { for: opts.id }, [
+      opts.label,
+      el("span", { class: "gp-opt", html: " (optional)" })
+    ]));
+    var ta = el("textarea", {
+      id: opts.id,
+      placeholder: opts.placeholder || "",
+      oninput: function (e) { opts.onInput(e.target.value); }
+    });
+    ta.value = opts.value || "";
+    wrap.appendChild(ta);
+    return wrap;
+  }
+
+  function progressBar(step) {
+    var bar = el("div", { class: "gp-progress" });
+    for (var i = 1; i <= 3; i++) {
+      bar.appendChild(el("span", { class: i <= step ? "gp-done" : "" }));
+    }
+    return bar;
+  }
+
+  // ---- FIX: single place to handle picking a property card ----------
+  // Handles: loading the right two lists, blanking both dropdowns (no
+  // pre-selected default), trying the URL ?service= prefill exactly once,
+  // and clearing Step 2 answers + rental state when the type changes.
+  function selectPropertyType(v) {
+    if (state.propertyType === v) return;
+    state.propertyType = v;
+    clearStep2Answers();
+    state.service = "";
+    state.frequency = "";
+    state.rental = { turnovers: "", linens: "" };
+    if (pendingServiceParam) {
+      var validNow = serviceOptionsFor(v).some(function (o) { return o.v === pendingServiceParam; });
+      if (validNow) state.service = pendingServiceParam;
+      pendingServiceParam = ""; // only ever attempt this once
+    }
+    delete errors.propertyType;
+  }
+
+  // ---- Step renderers ----------------------------------------------
+  function renderStep1() {
+    var card = el("div", { class: "gp-card" });
+    card.appendChild(progressBar(1));
+    card.appendChild(el("div", { class: "gp-step-label" }, ["Step 1 of 3 \u00B7 What do you need?"]));
+
+    var propWrap = el("div", { class: "gp-field" });
+    propWrap.appendChild(el("label", {}, ["Property type"]));
+    var cards = el("div", { class: "gp-property-cards" });
+    PROPERTY_CARDS.forEach(function (p) {
+      var selected = state.propertyType === p.v;
+      var pick = function () { selectPropertyType(p.v); render(); };
+      var c = el("div", {
+        class: "gp-prop-card" + (selected ? " gp-selected" : ""),
+        tabindex: "0",
+        role: "button",
+        "aria-pressed": selected ? "true" : "false",
+        onclick: pick,
+        onkeydown: function (e) {
+          if (e.key === "Enter" || e.key === " ") { e.preventDefault(); pick(); }
+        }
+      }, [
+        el("span", { class: "gp-emoji" }, [p.emoji]),
+        el("span", {}, [p.label])
+      ]);
+      cards.appendChild(c);
+    });
+    propWrap.appendChild(cards);
+    if (errors.propertyType) propWrap.appendChild(el("div", { class: "gp-error-msg", style: "display:block" }, [errors.propertyType]));
+    card.appendChild(propWrap);
+
+    var hasType = !!state.propertyType;
+    var isRental = state.service === "rental";
+
+    var serviceSelect = selectField({
+      id: "gp-service", label: "Service needed",
+      options: hasType ? serviceOptionsFor(state.propertyType) : DISABLED_OPTIONS,
+      value: state.service,
+      disabled: !hasType,
+      onChange: function (v) {
+        var wasRental = state.service === "rental";
+        state.service = v;
+        if (v === "rental" && !wasRental) {
+          state.frequency = "";
+        } else if (wasRental && v !== "rental") {
+          state.rental.turnovers = "";
+          state.frequency = "";
+        }
+        delete errors["gp-service"];
+        delete errors["gp-frequency"];
+        delete errors["gp-turnovers"];
+        render();
+      }
+    });
+
+    // ---- FIX: Airbnb exception ----------------------------------
+    // When "Airbnb or short-term rental turnover" is selected, "How often"
+    // is hidden entirely and "Turnovers per month" takes its place, per
+    // the spec doc ("One exception"). This option only ever appears on
+    // the House/Apartment list, so no office-specific handling is needed.
+    var secondField = isRental
+      ? selectField({
+          id: "gp-turnovers", label: "Turnovers per month", value: state.rental.turnovers,
+          options: [["", "Choose one"], ["1_2", "1 to 2"], ["3_5", "3 to 5"], ["6_10", "6 to 10"], ["10plus", "More than 10"]]
+            .map(function (p) { return { v: p[0], label: p[1] }; }),
+          onChange: function (v) { state.rental.turnovers = v; delete errors["gp-turnovers"]; render(); }
+        })
+      : selectField({
+          id: "gp-frequency", label: "How often",
+          options: hasType ? frequencyOptionsFor(state.propertyType) : DISABLED_OPTIONS,
+          value: state.frequency,
+          disabled: !hasType,
+          onChange: function (v) { state.frequency = v; delete errors["gp-frequency"]; render(); }
+        });
+
+    card.appendChild(el("div", { class: "gp-row2" }, [serviceSelect, secondField]));
+
+    var actions = el("div", { class: "gp-actions" });
+    actions.appendChild(el("button", {
+      class: "gp-btn gp-btn-primary", type: "button",
+      onclick: function () { if (validateStep1()) { state.step = 2; render(); } }
+    }, ["Continue"]));
+    card.appendChild(actions);
+    return card;
+  }
+
+  function propertyFieldsFor(type) {
+    if (type === "house") {
+      return {
+        data: state.house, addons: HOUSE_ADDONS,
+        fields: function (d) {
+          return [
+            el("div", { class: "gp-fields-auto" }, [
+              selectField({ id: "gp-bedrooms", label: "Bedrooms", value: d.bedrooms,
+                options: ["", "1", "2", "3", "4", "5", "6+"].map(function (v) { return { v: v, label: v === "" ? "Choose one" : v }; }),
+                onChange: function (v) { d.bedrooms = v; delete errors["gp-bedrooms"]; render(); } }),
+              selectField({ id: "gp-bathrooms", label: "Bathrooms", value: d.bathrooms,
+                options: ["", "1", "1.5", "2", "2.5", "3", "4+"].map(function (v) { return { v: v, label: v === "" ? "Choose one" : v }; }),
+                onChange: function (v) { d.bathrooms = v; delete errors["gp-bathrooms"]; render(); } }),
+              selectField({ id: "gp-levels", label: "Levels", value: d.levels,
+                options: ["", "1", "2", "3+"].map(function (v) { return { v: v, label: v === "" ? "Choose one" : v }; }),
+                onChange: function (v) { d.levels = v; delete errors["gp-levels"]; render(); } }),
+              zipField(d)
+            ])
+          ];
+        }
+      };
+    }
+    if (type === "apartment") {
+      return {
+        data: state.apartment, addons: APARTMENT_ADDONS,
+        fields: function (d) {
+          return [
+            el("div", { class: "gp-fields-auto" }, [
+              selectField({ id: "gp-bedrooms", label: "Bedrooms", value: d.bedrooms,
+                options: ["", "Studio", "1", "2", "3", "4+"].map(function (v) { return { v: v, label: v === "" ? "Choose one" : v }; }),
+                onChange: function (v) { d.bedrooms = v; delete errors["gp-bedrooms"]; render(); } }),
+              selectField({ id: "gp-bathrooms", label: "Bathrooms", value: d.bathrooms,
+                options: ["", "1", "1.5", "2", "3+"].map(function (v) { return { v: v, label: v === "" ? "Choose one" : v }; }),
+                onChange: function (v) { d.bathrooms = v; delete errors["gp-bathrooms"]; render(); } }),
+              selectField({ id: "gp-access", label: "Building access", value: d.access,
+                options: [["", "Choose one"], ["elevator", "Elevator"], ["stairs", "Stairs only"], ["desk", "Front desk or doorman"]]
+                  .map(function (p) { return { v: p[0], label: p[1] }; }),
+                onChange: function (v) { d.access = v; delete errors["gp-access"]; render(); } }),
+              zipField(d)
+            ])
+          ];
+        }
+      };
+    }
+    // office
+    return {
+      data: state.office, addons: OFFICE_ADDONS,
+      fields: function (d) {
+        return [
+          el("div", { class: "gp-fields-auto" }, [
+            selectField({ id: "gp-size", label: "Approximate size", value: d.size,
+              options: [["", "Choose one"], ["u1000", "Under 1,000 sq ft"], ["1000_2500", "1,000 to 2,500"],
+                ["2500_5000", "2,500 to 5,000"], ["5000_10000", "5,000 to 10,000"], ["o10000", "Over 10,000"]]
+                .map(function (p) { return { v: p[0], label: p[1] }; }),
+              onChange: function (v) { d.size = v; delete errors["gp-size"]; render(); } }),
+            selectField({ id: "gp-biztype", label: "Type of business", value: d.type,
+              options: [["", "Choose one"], ["office", "Office"], ["retail", "Retail"], ["medical", "Medical or dental"],
+                ["salon", "Salon or spa"], ["gym", "Gym or studio"], ["restaurant", "Restaurant or cafe"], ["other", "Other"]]
+                .map(function (p) { return { v: p[0], label: p[1] }; }),
+              onChange: function (v) { d.type = v; delete errors["gp-biztype"]; render(); } }),
+            selectField({ id: "gp-restrooms", label: "Restrooms", value: d.restrooms,
+              options: ["", "1", "2", "3", "4+"].map(function (v) { return { v: v, label: v === "" ? "Choose one" : v }; }),
+              onChange: function (v) { d.restrooms = v; delete errors["gp-restrooms"]; render(); } }),
+            selectField({ id: "gp-window", label: "Cleaning window", value: d.window,
+              options: [["", "Choose one"], ["business", "During business hours"], ["after", "After hours"],
+                ["weekends", "Weekends"], ["flexible", "Flexible"]].map(function (p) { return { v: p[0], label: p[1] }; }),
+              onChange: function (v) { d.window = v; delete errors["gp-window"]; render(); } }),
+            zipField(d)
+          ])
+        ];
+      }
+    };
+  }
+
+  function zipField(d) {
+    return textField({
+      id: "gp-zip", label: "ZIP code", value: d.zip, inputmode: "numeric", maxlength: 5,
+      placeholder: "30301",
+      onInput: function (v) {
+        d.zip = v.replace(/[^0-9]/g, "").slice(0, 5);
+        delete errors["gp-zip"];
+        render();
+      }
+    });
+  }
+
+  function clearStep2Answers() {
+    state.house = { bedrooms: "", bathrooms: "", levels: "", zip: "", addons: {} };
+    state.apartment = { bedrooms: "", bathrooms: "", access: "", zip: "", addons: {} };
+    state.office = { size: "", type: "", restrooms: "", window: "", zip: "", addons: {} };
+    ["gp-bedrooms", "gp-bathrooms", "gp-levels", "gp-access", "gp-size", "gp-biztype", "gp-restrooms", "gp-window", "gp-zip"].forEach(function (k) { delete errors[k]; });
+  }
+
+  function renderStep2() {
+    if (!state.propertyType) { state.step = 1; return renderStep1(); }
+    var conf = propertyFieldsFor(state.propertyType);
+    var labelMap = { house: "House", apartment: "Apartment or condo", office: "Office or commercial" };
+    var card = el("div", { class: "gp-card" });
+    card.appendChild(progressBar(2));
+    card.appendChild(el("div", { class: "gp-step-label" }, ["Step 2 of 3 \u00B7 About the space \u2014 " + labelMap[state.propertyType]]));
+
+    conf.fields(conf.data).forEach(function (f) { card.appendChild(f); });
+
+    if (/^[0-9]{5}$/.test(conf.data.zip || "") && !isZipInServiceArea(conf.data.zip)) {
+      card.appendChild(el("div", { class: "gp-zip-warn" }, [
+        "We may not cover that area yet \u2014 we will confirm when we reply."
+      ]));
+    }
+
+    var addonsWrap = el("div", { class: "gp-field" });
+    addonsWrap.appendChild(el("label", {}, ["Add-ons ", el("span", { class: "gp-opt", html: "(optional)" })]));
+    var grid = el("div", { class: "gp-addons" });
+    conf.addons.forEach(function (a) {
+      var id = "gp-addon-" + a[0];
+      var checked = !!conf.data.addons[a[0]];
+      grid.appendChild(el("label", { class: "gp-check", for: id }, [
+        (function () {
+          var cb = el("input", {
+            type: "checkbox", id: id,
+            onchange: function (e) { conf.data.addons[a[0]] = e.target.checked; }
+          });
+          cb.checked = checked;
+          return cb;
+        })(),
+        el("span", { class: "gp-check-label" }, [a[1]])
+      ]));
+    });
+    addonsWrap.appendChild(grid);
+    card.appendChild(addonsWrap);
+
+    if (state.service === "rental") {
+      card.appendChild(el("div", { class: "gp-rental-note" }, [
+        "Short-term rental details \u2014 shown because you selected Airbnb or short-term rental turnover. Turnovers per month was already captured in Step 1."
+      ]));
+      card.appendChild(el("div", { class: "gp-row2" }, [
+        selectField({
+          id: "gp-linens", label: "Include linens and restocking?", value: state.rental.linens,
+          options: [["", "Choose one"], ["yes", "Yes"], ["no", "No"], ["discuss", "Want to discuss"]]
+            .map(function (p) { return { v: p[0], label: p[1] }; }),
+          onChange: function (v) { state.rental.linens = v; delete errors["gp-linens"]; render(); }
+        }),
+        el("div") // spacer to keep the row2 grid balanced
+      ]));
+    }
+
+    var actions = el("div", { class: "gp-actions" });
+    actions.appendChild(el("button", {
+      class: "gp-btn gp-btn-secondary", type: "button",
+      onclick: function () { state.step = 1; render(); }
+    }, ["Back"]));
+    actions.appendChild(el("button", {
+      class: "gp-btn gp-btn-primary", type: "button",
+      onclick: function () { if (validateStep2()) { state.step = 3; render(); } }
+    }, ["Continue"]));
+    card.appendChild(actions);
+    return card;
+  }
+
+  function renderStep3() {
+    var c = state.contact;
+    var card = el("div", { class: "gp-card" });
+    card.appendChild(progressBar(3));
+    card.appendChild(el("div", { class: "gp-step-label" }, ["Step 3 of 3 \u00B7 Where do we send it?"]));
+
+    card.appendChild(el("div", { class: "gp-row2" }, [
+      textField({ id: "gp-name", label: "Name", value: c.name, autocomplete: "name", placeholder: "Jordan Miller",
+        onInput: function (v) { c.name = v; delete errors["gp-name"]; render(); } }),
+      textField({ id: "gp-phone", label: "Phone", value: c.phone, type: "tel", inputmode: "tel", autocomplete: "tel", placeholder: "(404) 555-0142",
+        onInput: function (v) { c.phone = v; delete errors["gp-phone"]; render(); } })
+    ]));
+    card.appendChild(el("div", { class: "gp-row2" }, [
+      textField({ id: "gp-email", label: "Email", value: c.email, type: "email", autocomplete: "email", placeholder: "jordan@email.com",
+        onInput: function (v) { c.email = v; delete errors["gp-email"]; render(); } }),
+      textField({ id: "gp-date", label: "Preferred date", value: c.date, optionalTag: true, placeholder: "Flexible",
+        onInput: function (v) { c.date = v; render(); } })
+    ]));
+    card.appendChild(textareaField({
+      id: "gp-message", label: "Anything we should know?", value: c.message,
+      placeholder: "Access instructions, problem areas, allergies",
+      onInput: function (v) { c.message = v; }
+    }));
+
+    // Honeypot — hidden from real visitors, invisible to screen readers via aria-hidden,
+    // left un-required so it stays empty for humans and gets filled by bots.
+    var hp = el("input", {
+      type: "text", tabindex: "-1", autocomplete: "off", "aria-hidden": "true",
+      id: "gp-website", name: "website",
+      oninput: function (e) { c.hp = e.target.value; }
+    });
+    card.appendChild(el("div", { class: "gp-hp-field" }, [
+      el("label", { for: "gp-website", class: "gp-sr-only" }, ["Leave this field empty"]),
+      hp
+    ]));
+
+    var consentWrap = el("label", { class: "gp-consent" + (errors.consent ? "" : ""), for: "gp-consent" }, []);
+    var cb = el("input", { type: "checkbox", id: "gp-consent", onchange: function (e) { c.consent = e.target.checked; delete errors.consent; render(); } });
+    cb.checked = c.consent;
+    consentWrap.appendChild(cb);
+    consentWrap.appendChild(el("span", {}, [
+      "I agree to be contacted about this request. See our ",
+      el("a", { href: "/privacy-policy/" }, ["privacy policy"]),
+      "."
+    ]));
+    card.appendChild(consentWrap);
+    if (errors.consent) card.appendChild(el("div", { class: "gp-error-msg", style: "display:block;margin-top:-14px" }, [errors.consent]));
+
+    var actions = el("div", { class: "gp-actions" });
+    actions.appendChild(el("button", {
+      class: "gp-btn gp-btn-secondary", type: "button",
+      onclick: function () { state.step = 2; render(); }
+    }, ["Back"]));
+    actions.appendChild(el("button", {
+      class: "gp-btn gp-btn-primary", type: "button", disabled: submitting,
+      onclick: submitForm
+    }, [submitting ? "Sending\u2026" : "Send my quote request"]));
+    card.appendChild(actions);
+
+    card.appendChild(el("p", { style: "text-align:center;color:var(--muted);font-size:0.78rem;margin:14px 0 0" }, [
+      "\uD83D\uDD12 No obligation. We never share your details."
+    ]));
+    return card;
+  }
+
+  function renderConfirmation() {
+    var wrap = el("div", { class: "gp-card gp-confirm" });
+    wrap.appendChild(el("div", { class: "gp-check-circle" }, ["\u2713"]));
+    wrap.appendChild(el("h3", {}, ["Thanks \u2014 we have got your request"]));
+    wrap.appendChild(el("p", {}, ["We will send your quote to " + (state.contact.email || "your email") + " within one business day."]));
+    wrap.appendChild(el("p", {}, [
+      "If you need it sooner, call ",
+      el("a", { href: "tel:" + PHONE_TEL }, [PHONE_DISPLAY]),
+      "."
+    ]));
+    var links = el("div", { class: "gp-confirm-links" });
+    links.appendChild(el("a", { href: "/" }, ["Back to home"]));
+    links.appendChild(el("a", { href: "/services/" }, ["See our services"]));
+    wrap.appendChild(links);
+    return wrap;
+  }
+
+  // ---- Validation ------------------------------------------------------
+  function validateStep1() {
+    errors = {};
+    if (!state.propertyType) errors.propertyType = "Choose a property type.";
+    if (!state.service) errors["gp-service"] = "Choose a service.";
+    if (state.service === "rental") {
+      if (!state.rental.turnovers) errors["gp-turnovers"] = "Choose turnovers per month.";
+    } else if (!state.frequency) {
+      errors["gp-frequency"] = "Choose how often.";
+    }
+    render();
+    return Object.keys(errors).length === 0;
+  }
+
+  function validateStep2() {
+    errors = {};
+    var d = state.propertyType === "house" ? state.house : state.propertyType === "apartment" ? state.apartment : state.office;
+    if (state.propertyType === "house") {
+      if (!d.bedrooms) errors["gp-bedrooms"] = "Choose bedrooms.";
+      if (!d.bathrooms) errors["gp-bathrooms"] = "Choose bathrooms.";
+      if (!d.levels) errors["gp-levels"] = "Choose levels.";
+    } else if (state.propertyType === "apartment") {
+      if (!d.bedrooms) errors["gp-bedrooms"] = "Choose bedrooms.";
+      if (!d.bathrooms) errors["gp-bathrooms"] = "Choose bathrooms.";
+      if (!d.access) errors["gp-access"] = "Choose building access.";
+    } else {
+      if (!d.size) errors["gp-size"] = "Choose approximate size.";
+      if (!d.type) errors["gp-biztype"] = "Choose type of business.";
+      if (!d.restrooms) errors["gp-restrooms"] = "Choose restrooms.";
+      if (!d.window) errors["gp-window"] = "Choose a cleaning window.";
+    }
+    if (!/^[0-9]{5}$/.test(d.zip || "")) errors["gp-zip"] = "Enter a 5-digit ZIP code.";
+    if (state.service === "rental") {
+      if (!state.rental.linens) errors["gp-linens"] = "Let us know about linens and restocking.";
+    }
+    render();
+    return Object.keys(errors).length === 0;
+  }
+
+  function validateStep3() {
+    errors = {};
+    var c = state.contact;
+    if (!c.name.trim()) errors["gp-name"] = "Enter your name.";
+    if (!c.phone.trim()) errors["gp-phone"] = "Enter a phone number.";
+    if (!c.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(c.email)) errors["gp-email"] = "Enter a valid email address.";
+    if (!c.consent) errors.consent = "Please agree to be contacted so we can send your quote.";
+    render();
+    return Object.keys(errors).length === 0;
+  }
+
+  // ---- Submit ------------------------------------------------------
+  function buildPayload() {
+    return {
+      propertyType: state.propertyType,
+      service: state.service,
+      frequency: state.frequency,
+      details: state.propertyType === "house" ? state.house
+        : state.propertyType === "apartment" ? state.apartment : state.office,
+      rental: state.service === "rental" ? state.rental : null,
+      contact: {
+        name: state.contact.name, phone: state.contact.phone, email: state.contact.email,
+        date: state.contact.date, message: state.contact.message
+      },
+      honeypot: state.contact.hp
+    };
+  }
+
+  function submitForm() {
+    if (!validateStep3()) return;
+    // Honeypot filled -> silently treat as success without sending anywhere real.
+    if (state.contact.hp) { submitted = true; render(); return; }
+
+    submitting = true; render();
+    var payload = buildPayload();
+
+    var finish = function () { submitting = false; submitted = true; render(); };
+
+    if (FORM_SUBMIT_URL) {
+      fetch(FORM_SUBMIT_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      }).then(finish).catch(finish); // lead still shown as received; see note below
+    } else {
+      // No backend configured yet — demo mode.
+      setTimeout(finish, 400);
+    }
+  }
+
+  // ---- Root render ----------------------------------------------------
+  function render() {
+    root.innerHTML = "";
+    var inner = el("div", { class: "gp-inner" });
+    inner.appendChild(el("h2", { class: "gp-title" }, ["Get your free quote"]));
+    inner.appendChild(el("p", { class: "gp-sub" }, ["Takes about a minute. We reply with pricing within one business day."]));
+    inner.appendChild(el("p", { class: "gp-call" }, [
+      "Prefer to talk? Call ",
+      el("a", { href: "tel:" + PHONE_TEL }, [PHONE_DISPLAY])
+    ]));
+
+    if (submitted) { inner.appendChild(renderConfirmation()); root.appendChild(inner); return; }
+    if (state.step === 1) inner.appendChild(renderStep1());
+    else if (state.step === 2) inner.appendChild(renderStep2());
+    else inner.appendChild(renderStep3());
+    root.appendChild(inner);
+  }
+
+  render();
+})();
+</script>
