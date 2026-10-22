@@ -1,15 +1,15 @@
+
+
 #include <bits/stdc++.h>
 using namespace std;
 int main()
 {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
 
-	int x, y;
-    cin >> x >> y;
+	int a, b;
+    cin >> a >> b;
 
-    int ans = x * 100;
-    int sum = y - x;
+    int ans = a * 100;
+    int sum = b - a;
     ans = ans + (sum * 150);
 
     cout << ans << endl;
